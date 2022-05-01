@@ -125,12 +125,10 @@
         
         @keyframes tilt-in-bottom-1 {
             0% {
-               
                 transform: rotateY(30deg) translateY(300px) skewY(-30deg);
                 opacity: 0;
             }
             100% {
-                
                 transform: rotateY(0deg) translateY(0) skewY(0deg);
                 opacity: 1;
             }
@@ -265,6 +263,7 @@
         let backArr = [];
         let gameIsStarted = false;
         let counter = 0;
+        const fieldSize = 4;
         let timer = new Timer(document.querySelector(".timer span"));
         for (let i = 0; i < 16; i++) {
             arrOfSources[i] = "images/movie_" + (i + 1) + ".png";
@@ -317,15 +316,10 @@
                 images[i].style.order = backArr[i];
                 images[i] = images[backArr[i]];
 
-                // let value = "images/movie_" + (backArr[i]+1) + ".png";
-                // images[i].setAttribute("src", value);
-                // arrOfSources[i] = arrOfSources[backArr[i]]; 
-                // images[i].classList.remove("blank");
+
             }
 
-            // blankNumber = getRandomIntInclusive(0, images.length-1); // номер элемента с класссом blank  , то бишь белая клетка 
 
-            // images[blankNumber].classList.add("blank");
 
         }
 
@@ -346,31 +340,7 @@
             }
             return number - 1;
         }
-        // function move (e)
-        // {
-        // 	let buffer;
-        // 	let currentNumber = parse(e.getAttribute("src"));
-        // 		if (images[currentNumber+1] == blankNumber)// || || ||
-        // 		{
 
-        // 			buffer = images[blankNumber].getAttribute("src");
-
-        // 			images[blankNumber].setAttribute("src", images[currentNumber].getAttribute("src"));
-        // 			images[blankNumber].classList.remove("blank");
-
-        // 			images[currentNumber].setAttribute("src", buffer);
-        // 		images[blankNumber].classList.add("blank");
-
-
-        // 		buffer = arrOfSources[currentNumber];
-
-        // 		arrOfSources[currentNumber] = arrOfSources[blank];
-        // 		arrOfSources[blank] == buffer;
-
-
-
-        // 		}
-        // }
         field.addEventListener("click", (e) => {
             for (let i = 0; i < images.length; i++) {
                 images[i].style.transition = "none";
@@ -380,7 +350,7 @@
             let index = images.length - 1;
             if (gameIsStarted) {
                 if (Number(images[index].style.order) === Number(e.target.style.order) + 1) { //debugger;
-                    if ((Number(images[index].style.order) + 1) % 4 !== 1) {
+                    if ((Number(images[index].style.order) + 1) % fieldSize !== 1) {
                         // debugger;
                         buffer = e.target.style.order;
                         e.target.style.order = images[index].style.order;
@@ -390,18 +360,18 @@
 
                 } else if (Number(images[index].style.order) === Number(e.target.style.order) - 1) //двигаем белый квадрат вперед, а клетку, по которой щелкнули назад
                 {
-                    if ((Number(images[index].style.order) + 1) % 4 !== 0) {
+                    if ((Number(images[index].style.order) + 1) % fieldSize !== 0) {
                         buffer = e.target.style.order;
                         e.target.style.order = images[index].style.order;
                         images[index].style.order = String(buffer);
                         counter++;
                     }
-                } else if (Number(images[index].style.order) === Number(e.target.style.order) - 4) {
+                } else if (Number(images[index].style.order) === Number(e.target.style.order) - fieldSize) {
                     buffer = e.target.style.order;
                     e.target.style.order = images[index].style.order;
                     images[index].style.order = String(buffer);
                     counter++;
-                } else if (Number(images[index].style.order) === Number(e.target.style.order) + 4) {
+                } else if (Number(images[index].style.order) === Number(e.target.style.order) + fieldSize) {
                     buffer = e.target.style.order;
                     e.target.style.order = images[index].style.order;
                     images[index].style.order = String(buffer);
@@ -409,26 +379,7 @@
                 }
 
             }
-            //if (e.target.style.order+1 == document.querySelector)// || || ||
-            //{
 
-            // 	buffer = images[blankNumber].getAttribute("src");
-
-            // 	images[blankNumber].setAttribute("src", images[currentNumber].getAttribute("src"));
-            // 	images[blankNumber].classList.remove("blank");
-
-            // 	images[currentNumber].setAttribute("src", buffer);
-            // images[blankNumber].classList.add("blank");
-
-
-            // buffer = arrOfSources[currentNumber];
-
-            // arrOfSources[currentNumber] = arrOfSources[blank];
-            // arrOfSources[blank] == buffer;
-
-
-
-            //}
 
 
         });
@@ -459,12 +410,7 @@
             }, 1200)
         }
         const img = document.querySelector(".img");
-        // tip.addEventListener("click", (e)=>{
-        // 	if (e.target!=img)
-        // 	{
-        // 		useTip();
-        // 	}
-        // })
+
 
         function checkGameStatus() {
             if (gameIsStarted) {
