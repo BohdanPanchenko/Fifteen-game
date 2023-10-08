@@ -227,6 +227,7 @@
             src: url("numbers2.ttf");
             font-style: normal;
             font-weight: normal;
+            font-display: swap;
         }
     </style>
 </head>
@@ -349,31 +350,7 @@
             }
             return number - 1;
         }
-        // function move (e)
-        // {
-        // 	let buffer;
-        // 	let currentNumber = parse(e.getAttribute("src"));
-        // 		if (images[currentNumber+1] == blankNumber)// || || ||
-        // 		{
 
-        // 			buffer = images[blankNumber].getAttribute("src");
-
-        // 			images[blankNumber].setAttribute("src", images[currentNumber].getAttribute("src"));
-        // 			images[blankNumber].classList.remove("blank");
-
-        // 			images[currentNumber].setAttribute("src", buffer);
-        // 		images[blankNumber].classList.add("blank");
-
-
-        // 		buffer = arrOfSources[currentNumber];
-
-        // 		arrOfSources[currentNumber] = arrOfSources[blank];
-        // 		arrOfSources[blank] == buffer;
-
-
-
-        // 		}
-        // }
         field.addEventListener("click", (e) => {
             for (let i = 0; i < images.length; i++) {
                 images[i].style.transition = "none";
@@ -412,27 +389,7 @@
                 }
 
             }
-            //if (e.target.style.order+1 == document.querySelector)// || || ||
-            //{
-
-            // 	buffer = images[blankNumber].getAttribute("src");
-
-            // 	images[blankNumber].setAttribute("src", images[currentNumber].getAttribute("src"));
-            // 	images[blankNumber].classList.remove("blank");
-
-            // 	images[currentNumber].setAttribute("src", buffer);
-            // images[blankNumber].classList.add("blank");
-
-
-            // buffer = arrOfSources[currentNumber];
-
-            // arrOfSources[currentNumber] = arrOfSources[blank];
-            // arrOfSources[blank] == buffer;
-
-
-
-            //}
-
+    
 
         });
 
